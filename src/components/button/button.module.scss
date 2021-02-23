@@ -1,0 +1,18 @@
+@use '/src/styles/colors.scss' as colors;
+
+.buttonBlue {
+  border-radius: 31px 31px 31px 0px;
+  border-width: 0;
+  background: colors.$primary 0% 0% no-repeat padding-box;
+  opacity: 1;
+  box-shadow: none;
+  outline: none;
+  color: colors.$primary-light;
+  font-family: montserrat-bold;
+  &__Large {
+    @extend .buttonBlue;
+    width: 374px;
+    height: 62px;
+  }
+
+}
