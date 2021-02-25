@@ -7,6 +7,61 @@
   border-radius: 6px;
   opacity: 1;
   padding: 3rem;
+}
+
+.fieldsWrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.inputContainer {
+  input {
+    width: 100%;
+    height: 56px;
+    color: colors.$grey;
+    background: colors.$white;
+    padding: 10px;
+    border: 1px solid colors.$primary-light;
+    margin: 5px 0;
+    :focus {
+      outline: none;
+    }
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: colors.$grey;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    outline: none;
+  }
+}
+
+.checkboxContainer {
+  width: 100%;
+  display: flex;
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    cursor: pointer;
+  }
+  label {
+    cursor: pointer;
+  }
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

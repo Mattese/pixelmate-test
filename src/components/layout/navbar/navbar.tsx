@@ -7,6 +7,7 @@ import { Home } from 'src/pages/home';
 import styles from './navbar.module.scss';
 import Logo from 'src/assets/Pixelmate_logo_claim_white.svg';
 import { Button } from 'src/components/button/button';
+import { Link } from 'react-router-dom';
 
 export const routes: NavbarConfigItem[] = [
   { path: '/designeri', label: 'Designéři', page: <Designers />, exact: true },
@@ -24,14 +25,20 @@ export const Navbar: React.FC = () => {
     <nav className={styles.navbar}>
       {/* Navbar logo holder */}
       <div>
-        <img src={Logo} alt="Pixelmate logo" />
+        <Link to="/">
+          <img src={Logo} alt="Pixelmate logo" />
+        </Link>
       </div>
 
-      <div style={{ display: 'flex', flexDirection: 'row' }}>
-        {navbarConfig.map((route, index) => (
-          <NavbarItem navbarItemLabel={route.label} path={route.path} key={index} />
-        ))}
-        <Button inverted label="Přihlásit se" />
+      <div className={styles.navContainer}>
+        <ul>
+          {navbarConfig.map((route, index) => (
+            <NavbarItem navbarItemLabel={route.label} path={route.path} key={index} />
+          ))}
+          <li>
+            <Button onClick={() => null} className="button__Inverted__Small" label="Přihlásit se" />
+          </li>
+        </ul>
       </div>
     </nav>
   );

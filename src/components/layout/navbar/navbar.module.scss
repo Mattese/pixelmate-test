@@ -3,11 +3,24 @@
   background-color: transparent;
   height: 100px;
   display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
   position: fixed;
 }
 
-.logoHolder {
+.logoContainer {
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  li {
+    float: left;
+    list-style-type: none;
+  }
 }
 
 .navbarItem {
