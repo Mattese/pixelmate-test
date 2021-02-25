@@ -2,13 +2,20 @@ import styles from './button.module.scss';
 
 interface ComponentProps {
   label: string;
-  inverted?: boolean;
   disabled?: boolean;
+  submit?: boolean;
+  // TODO: change type
+  onClick?: any;
+  className?: string;
 }
-
-export const Button: React.FC<ComponentProps> = ({ label, inverted, disabled }) => {
+// className={className && `styles.${className}`}
+export const Button: React.FC<ComponentProps> = ({ label, disabled, onClick, className }) => {
   return (
-    <button disabled={disabled} className={inverted ? styles.button__Inverted__Large : styles.button__Blue__Large}>
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={`${styles[className ? className : 'button__Blue__Large']}`}
+    >
       {label}
     </button>
   );

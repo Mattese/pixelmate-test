@@ -10,8 +10,8 @@ interface ComponentProps {
 
 export const NavbarItem: React.FC<ComponentProps> = ({ navbarItemLabel, path }) => {
   return (
-    <div className={styles.navbarItem}>
+    <li className={styles.navbarItem}>
       <Link to={path}>{navbarItemLabel}</Link>
-    </div>
+    </li>
   );
 };
