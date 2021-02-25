@@ -1,18 +1,30 @@
-@use '/src/styles/colors.scss' as colors;
+@use '/src/styles/_colors.scss' as colors;
 
-.buttonBlue {
+.button {
   border-radius: 31px 31px 31px 0px;
   border-width: 0;
-  background: colors.$primary 0% 0% no-repeat padding-box;
   opacity: 1;
   box-shadow: none;
   outline: none;
   color: colors.$primary-light;
   font-family: montserrat-bold;
-  &__Large {
-    @extend .buttonBlue;
-    width: 374px;
-    height: 62px;
+  &__Blue {
+    @extend .button;
+    background: colors.$primary 0% 0% no-repeat padding-box;
+    &__Large {
+      @extend .button__Blue;
+      width: 374px;
+      height: 62px;
+    }
   }
-
+  &__Inverted {
+    @extend .button;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    &__Large {
+      @extend .button__Inverted;
+      width: 374px;
+      height: 62px;
+    }
+  }
 }

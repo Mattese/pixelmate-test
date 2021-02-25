@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  background-color: transparent;
+  height: 100px;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
+}
+
+.logoHolder {
+}
+
+.navbarItem {
+  > a {
+    text-align: left;
+    letter-spacing: 0px;
+    color: #ffffff;
+    opacity: 1;
+    font: normal normal bold 14px/18px montserrat-regular;
+    color: #ffffff;
+    text-decoration: none;
+  }
+}
