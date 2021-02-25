@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
 import 'src/styles/styles.scss';
-import { Button } from 'src/components/button/button';
+import 'src/styles/text.scss';
+import { Layout } from 'src/components/layout/layout';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">testsdafasd asdfasdf asdfaf a</header>
-      <main>
-        <Button label="Test button" />
-      </main>
+      <Layout></Layout>
     </div>
   );
 }

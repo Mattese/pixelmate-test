@@ -1,0 +1,12 @@
+@use '/src/styles/_colors.scss' as colors;
+
+.footer {
+  width: 100%;
+  height: 142px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6rem;
+  color: colors.$grey-light;
+  background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
+}

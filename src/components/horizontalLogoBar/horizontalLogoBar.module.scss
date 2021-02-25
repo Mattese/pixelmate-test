@@ -1,0 +1,52 @@
+@use '/src/styles/_colors.scss' as colors;
+
+.logoWrapper {
+  background: colors.$white 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 35px #0000001f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 134px;
+  padding: 0 80px;
+  position: relative;
+  top: -67px;
+}
+
+@mixin logoImageMixin {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+}
+
+.logoImage {
+  height: 30px;
+  width: 103px;
+
+  &_CzechTv {
+    @extend .logoImage;
+    background: url('../../assets/loga-header-ct@2x.png');
+    @include logoImageMixin();
+  }
+  &_Cemix {
+    @extend .logoImage;
+    background: transparent url('../../assets/loga-header-cemix@2x.png') 0% 0% no-repeat padding-box;
+    @include logoImageMixin();
+  }
+  &_Deloitte {
+    @extend .logoImage;
+    background: transparent url('../../assets/loga-header-deloitte@2x.png') 0% 0% no-repeat padding-box;
+    @include logoImageMixin();
+  }
+  &_NM {
+    @extend .logoImage;
+    background: transparent url('../../assets/Group.png') 0% 0% no-repeat padding-box;
+    @include logoImageMixin();
+  }
+  &_Bosch {
+    @extend .logoImage;
+    background: transparent url('../../assets/loga-header-bosch@2x.png') 0% 0% no-repeat padding-box;
+    @include logoImageMixin();
+  }
+}

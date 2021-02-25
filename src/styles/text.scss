@@ -1,0 +1,22 @@
+@use '/src/styles/_colors.scss' as colors;
+
+.text-primary {
+  color: colors.$primary;
+}
+.text-primary-light {
+  color: colors.$primary-light;
+}
+.text-black {
+  color: colors.$black;
+}
+.text-grey {
+  color: colors.$grey;
+}
+
+.text-bold {
+  font-family: montserrat-bold;
+}
+
+.text-extra-bold {
+  font-family: montserrat-extra-bold;
+}

@@ -8,10 +8,54 @@
   src: url('../fonts/Montserrat/Montserrat-Bold.ttf');
 }
 
+@font-face {
+  font-family: montserrat-extra-bold;
+  src: url('../fonts/Montserrat/Montserrat-ExtraBold.ttf');
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 14px;
+  font-size: 1.4rem;
+}
+
+h1 {
+  font-size: 48px;
+  font-size: 4.8rem;
+  line-height: 64px;
+  line-height: 6.4rem;
+}
+
+h2 {
+  font-size: 24px;
+  font-size: 2.4rem;
+  line-height: 34px;
+  line-height: 3.4rem;
+}
+
+h3 {
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 19px;
+  line-height: 1.9rem;
+}
+
+.row {
+  max-width: 140rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+:root {
   font-family: montserrat-regular;
-  text-decoration: none;
+  line-height: 1.5;
 }

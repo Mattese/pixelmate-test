@@ -1,0 +1,12 @@
+@use '/src/styles/_colors.scss' as colors;
+
+.container {
+  height: 423px;
+  width: 434px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  border-radius: 6px;
+  opacity: 1;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
