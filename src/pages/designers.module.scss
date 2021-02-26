@@ -1,3 +1,22 @@
-.hero {
-  background-color: aqua;
+@use '/src/styles/_colors.scss' as colors;
+
+.topSection {
+  height: 253px;
+  width: 100%;
+  background-color: colors.$white;
+}
+.cardsListSection {
+  max-height: 1485px;
+  width: 100%;
+  background-color: colors.$primary-light;
+  padding-top: 13.4rem;
+  padding-bottom: 15.4rem;
+  overflow: hidden;
+}
+
+.cardsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }

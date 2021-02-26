@@ -1,11 +1,5 @@
 @use '/src/styles/_colors.scss' as colors;
 
-.hero {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 .developmentSection {
   width: 100%;
   height: 100vh;
