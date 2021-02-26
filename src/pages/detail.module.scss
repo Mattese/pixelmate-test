@@ -1,0 +1,63 @@
+@use '/src/styles/_colors.scss' as colors;
+
+.addressContainer {
+  background-color: colors.$primary-light;
+  border-radius: 19px;
+  width: 100%;
+  height: 118px;
+  padding: 1.8rem 12.6rem 2.7rem 4.6rem;
+  margin: 3rem 0;
+  text-align: left;
+}
+
+.detailCard {
+  background-color: colors.$white;
+  width: 402px;
+  height: 620px;
+  position: relative;
+  top: 20rem;
+  margin: 0 4.5rem;
+}
+
+.imgWrapper {
+  width: 557px;
+  height: 620px;
+  position: relative;
+  top: 20rem;
+  margin: 0 4.5rem;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.contentContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.websiteWrapper {
+  text-align: center;
+  margin: 3.6rem auto;
+  text-decoration: underline;
+}
+
+.companyWrapper {
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 34px;
+  line-height: 3.4rem;
+  padding: 1.7rem 3rem;
+}
+
+.nameWrapper {
+  font-size: 38px;
+  font-size: 3.8rem;
+  line-height: 34px;
+  line-height: 3.4rem;
+  margin: 0.8rem 0;
+}
+
+.backButton {
+}

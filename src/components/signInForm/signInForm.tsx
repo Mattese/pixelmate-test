@@ -1,4 +1,4 @@
-import { Button } from 'src/components/button/button';
+import { Button, ButtonClasses } from 'src/components/button/button';
 import styles from './signInForm.module.scss';
 import { useForm } from 'react-hook-form';
 
@@ -47,7 +47,7 @@ export const SignInForm: React.FC = () => {
           </div>
         </div>
         <div>
-          <Button className="button__Blue__Large" label="PŘIHLASIT SE" />
+          <Button className={ButtonClasses['button__Blue__Large']} label="PŘIHLASIT SE" />
         </div>
       </form>
     </div>

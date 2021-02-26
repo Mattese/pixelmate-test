@@ -10,3 +10,9 @@
   color: colors.$grey-light;
   background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
 }
+
+.footerLogo {
+  position: absolute;
+  $width: 180px;
+  left: calc(50% - #{$width/2});
+}

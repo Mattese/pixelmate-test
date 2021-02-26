@@ -4,6 +4,10 @@
   width: 180px;
   height: 44px;
 }
+@mixin Medium {
+  width: 262px;
+  height: 62px;
+}
 
 @mixin Large {
   width: 374px;
@@ -26,6 +30,10 @@
       @extend .button__Blue;
       @include Large;
     }
+    &__Medium {
+      @extend .button__Blue;
+      @include Medium;
+    }
     &__Small {
       @extend .button__Blue;
       @include Small;
@@ -33,14 +41,36 @@
   }
   &__Inverted {
     @extend .button;
-    border: 1px solid #ffffff;
+    border: 1px solid colors.$white;
     background-color: transparent;
     &__Large {
       @extend .button__Inverted;
       @include Large;
     }
+    &__Medium {
+      @extend .button__Inverted;
+      @include Medium;
+    }
     &__Small {
       @extend .button__Inverted;
+      @include Small;
+    }
+  }
+  &__White {
+    @extend .button;
+    border: 1px solid colors.$primary;
+    color: colors.$primary;
+    background-color: transparent;
+    &__Large {
+      @extend .button__White;
+      @include Large;
+    }
+    &__Medium {
+      @extend .button__White;
+      @include Medium;
+    }
+    &__Small {
+      @extend .button__White;
       @include Small;
     }
   }
