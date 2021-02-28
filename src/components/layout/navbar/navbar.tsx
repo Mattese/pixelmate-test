@@ -21,6 +21,7 @@ export const navbarConfig: Omit<NavbarConfigItem, 'page' | 'exact' | 'whiteMenuT
 
 export const Navbar: React.FC = () => {
   const [shouldRenderWhite, setShouldRenderWhite] = useState(false);
+  const [navbarScrolled, setNavbarScrolled] = useState(false);
   const history = useHistory();
   const location = useLocation();
 
@@ -33,8 +34,18 @@ export const Navbar: React.FC = () => {
     console.log(history.location.pathname);
   }, [location.pathname]);
 
+  const changeBackground = () => {
+    if (window.scrollY >= 100) {
+      setNavbarScrolled(true);
+    } else {
+      setNavbarScrolled(false);
+    }
+  };
+
+  window.addEventListener('scroll', changeBackground);
+
   return (
-    <nav className={styles.navbar}>
+    <nav className={navbarScrolled ? styles.navbarActive : styles.navbar}>
       {/* Navbar logo holder */}
       <div className={styles.navbarSpacer}>
         <div>

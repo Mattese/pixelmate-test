@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { DesignerCard } from 'src/components/designerCard/designerCard';
+import { SearchBar } from 'src/components/searchBar/searchBar';
 import { Designer } from 'src/types/types';
 import styles from './designers.module.scss';
 
@@ -16,7 +17,11 @@ export const Designers: React.FC = () => {
   }, []);
   return (
     <>
-      <div className={styles.topSection} />
+      <div className={styles.topSection}>
+        <div className={`${styles.searchBarWrapper} `}>
+          <SearchBar />
+        </div>
+      </div>
       <div className={styles.cardsListSection}>
         <div className="row">
           <div className={styles.cardsWrapper}>
