@@ -1,10 +1,15 @@
 @use '/src/styles/_colors.scss' as colors;
+@use 'src/styles/_media-queries.scss' as queries;
 
 .navbar {
   width: 100%;
   background-color: transparent;
   height: 100px;
   position: fixed;
+  z-index: 5;
+  @include queries.tablet {
+    background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
+  }
 }
 
 .navbarActive {
@@ -14,6 +19,10 @@
   background-color: colors.$primary;
   opacity: 0.5;
   z-index: 5;
+  @include queries.tablet {
+    background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
+    opacity: 1;
+  }
 }
 
 .navbarSpacer {
@@ -22,10 +31,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 60px;
-}
-
-.logoContainer {
+  padding: 6rem;
+  @include queries.tablet {
+    flex-direction: column;
+    padding: 2rem 0 0 0;
+    width: 100vw;
+    display: none;
+  }
+  @include queries.mobile {
+    flex-direction: column;
+    padding-top: 1rem;
+  }
 }
 
 .navContainer {
@@ -33,26 +49,36 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  li {
-    float: left;
+  ul {
+    display: flex;
+    flex-direction: row;
+    @include queries.tablet {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  ul > li {
     list-style-type: none;
   }
 }
 
 .navbarItem {
+  :hover {
+    color: colors.$grey;
+  }
   > a {
+    transition: 0.2s;
+    color: colors.$white;
     text-align: left;
     letter-spacing: 0px;
-    color: colors.$white;
     opacity: 1;
     font: normal normal bold 14px/18px montserrat-regular;
-    color: colors.$white;
     text-decoration: none;
     margin-left: 4rem;
   }
 }
 
-.navbarItemButton > a {
+.navbarItemButton {
   font: normal normal bold 14px/18px montserrat-regular;
   color: colors.$white;
   border: 1px solid colors.$white;
@@ -60,5 +86,124 @@
   padding: 0.875rem 1.875rem 0.75rem;
   margin-top: -1rem;
   margin-left: 4rem;
-  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  &:hover {
+    color: colors.$grey;
+    border-color: colors.$grey;
+  }
+}
+
+.navContainerMobile {
+  position: absolute;
+  display: 'none';
+}
+
+.modalContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalTitle {
+  margin: 2rem 0;
+}
+
+.modalContent {
+  text-align: center;
+  > input {
+    width: 100%;
+    max-width: 535px;
+    @include queries.tablet {
+      width: 100%;
+      padding-left: 3rem;
+    }
+    height: 56px;
+    margin-right: 2.3rem;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #e0e0e5;
+    text-align: left;
+    font: normal normal medium 18px/22px montserrat;
+    padding-left: 6rem;
+    outline: none;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: colors.$grey;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    outline: none;
+  }
+}
+
+.modalButtonWrapper {
+  margin: 2rem 0;
+  width: 216px;
+  @include queries.tablet {
+    width: 100%;
+  }
+}
+
+.mobileMenuButton {
+  position: absolute;
+  top: 25px;
+  right: 30px;
+  display: none;
+  color: colors.$white;
+  transition: 0.2s;
+  &:hover {
+    color: colors.$grey;
+  }
+  @include queries.tablet {
+    display: inline;
+  }
+  @include queries.mobile {
+    top: 25px;
+    right: 15px;
+  }
+}
+
+.mobileNavItemsWrapper {
+  padding-top: 100px;
+  background-color: inherit;
+}
+
+.mobileNavbar {
+  @include queries.tablet {
+    min-height: 100px;
+    width: 100%;
+  }
+}
+
+.mobileNavItem {
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
+  &:hover {
+    background-color: colors.$grey;
+  }
+  > a {
+    text-decoration: none;
+    color: colors.$white;
+  }
+}
+
+.mobileLogoContainer {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
 }

@@ -10,20 +10,35 @@ import styles from './designers.module.scss';
 export const Designers: React.FC = () => {
   const [designers, setDesigners] = useState<Designer[]>([]);
   const [loading, setLoading] = useState(false);
+  const [searchBarValue, setSearchBarValue] = useState('');
+
   const loadDesigners = async () => {
     setLoading(true);
     const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
     setDesigners(data);
     setLoading(false);
   };
+
   useEffect(() => {
     loadDesigners();
   }, []);
+
+  const filterSearchName = () => {
+    let filteredArray = designers.filter((designer) =>
+      designer.name.toLocaleLowerCase().includes(searchBarValue.toLocaleLowerCase()),
+    );
+    return filteredArray.map((d, index) => {
+      if (index < 6) {
+        return <DesignerCard key={index} designer={d} />;
+      }
+    });
+  };
+
   return (
     <>
       <div className={styles.topSection}>
         <div className={`${styles.searchBarWrapper} `}>
-          <SearchBar />
+          <SearchBar value={searchBarValue} onValueChange={setSearchBarValue} />
         </div>
       </div>
       <div className={styles.cardsListSection}>
@@ -36,11 +51,7 @@ export const Designers: React.FC = () => {
                 <SkeletonDesignerCard />
               </>
             ) : (
-              designers.map((d, index) => {
-                if (index < 6) {
-                  return <DesignerCard key={index} designer={d} />;
-                }
-              })
+              filterSearchName()
             )}
           </div>
         </div>

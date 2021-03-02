@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from 'src/components/button/button';
 import { HorizontalLogoBar } from 'src/components/horizontalLogoBar/horizontalLogoBar';
 import { SignInForm } from 'src/components/signInForm/signInForm';
 import styles from './home.module.scss';
+import { ReactComponent as ArrowForward } from 'src/assets/flaticon1557998900-white-svg.svg';
+import { Modal } from 'src/components/modal/modal';
 
 export const Home: React.FC = () => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
     <>
       <div className={styles.developmentSection}>
@@ -20,11 +23,11 @@ export const Home: React.FC = () => {
                   zbytečně.
                 </h2>
               </div>
-              <div>
-                <Button label="KONTAKTUJTE NÁS" />
+              <div className={styles.contactButtonRow}>
+                <Button label="KONTAKTUJTE NÁS" icon={<ArrowForward />} />
               </div>
             </div>
-            <div>
+            <div className={styles.developmentBoxRight}>
               <SignInForm />
             </div>
           </div>
@@ -66,7 +69,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
           <div className={styles.buttonRow}>
-            <Button label="CO DALŠÍHO SE ŠUŠKÁ" />
+            <Button label="CO DALŠÍHO SE ŠUŠKÁ" icon={<ArrowForward />} onClick={() => setIsModalVisible(true)} />
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 @use '/src/styles/_colors.scss' as colors;
+@use 'src/styles/_media-queries.scss' as queries;
 
 .footer {
   width: 100%;
@@ -9,10 +10,20 @@
   padding: 6rem;
   color: colors.$grey-light;
   background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
+  align-items: center;
+  @include queries.tablet {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .footerLogo {
   position: absolute;
   $width: 180px;
   left: calc(50% - #{$width/2});
+  @include queries.tablet {
+    position: unset;
+  }
 }

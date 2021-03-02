@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import styles from './button.module.scss';
 
 export enum ButtonClasses {
@@ -19,16 +20,17 @@ interface ComponentProps {
   // TODO: change type
   onClick?: any;
   className?: ButtonClasses;
+  icon?: ReactElement;
 }
-// className={className && `styles.${className}`}
-export const Button: React.FC<ComponentProps> = ({ label, disabled, onClick, className }) => {
+
+export const Button: React.FC<ComponentProps> = ({ label, disabled, onClick, className, icon }) => {
   return (
     <button
       onClick={onClick}
       disabled={disabled}
       className={`${styles[className ? className : 'button__Blue__Large']}`}
     >
-      {label}
+      {label} {icon && icon}
     </button>
   );
 };
