@@ -1,6 +1,7 @@
 import { Button, ButtonClasses } from 'src/components/button/button';
 import styles from './signInForm.module.scss';
 import { useForm } from 'react-hook-form';
+import { ReactComponent as ArrowForward } from 'src/assets/flaticon1557998900-white-svg.svg';
 
 type Inputs = {
   example: string;
@@ -43,11 +44,11 @@ export const SignInForm: React.FC = () => {
           </div>
           <div>
             <input type="checkbox" id="checkbox1" name="gdpr" ref={register({ required: true })} />
-            <label htmlFor="checkbox1">Souhlasím se všeobecnými podmínkami a Zásadou o ochranně osobních údajlů.</label>
+            <label htmlFor="checkbox1">Souhlasím se všeobecnými podmínkami a Zásadou o ochranně osobních údajů.</label>
           </div>
         </div>
         <div>
-          <Button className={ButtonClasses['button__Blue__Large']} label="PŘIHLASIT SE" />
+          <Button className={ButtonClasses['button__Blue__Large']} label="PŘIHLASIT SE" icon={<ArrowForward />} />
         </div>
       </form>
     </div>

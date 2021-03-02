@@ -1,2 +1,51 @@
 @use '/src/styles/_colors.scss' as colors;
+@use 'src/styles/_media-queries.scss' as queries;
 
+$width: 834px;
+$widthTablet: 320px;
+.container {
+  width: $width;
+  padding: 3rem;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 4px 35px #0000001f;
+  display: flex;
+  @include queries.tablet {
+    width: $widthTablet;
+  }
+  > input {
+    width: 100%;
+    max-width: 535px;
+    @include queries.tablet {
+      width: 100%;
+      padding-left: 3rem;
+    }
+    height: 62px;
+    margin-right: 2.3rem;
+    background: #ffffff 0% 0% no-repeat padding-box;
+    border: 1px solid #e0e0e5;
+    text-align: left;
+    font: normal normal medium 18px/22px montserrat;
+    padding-left: 6rem;
+    outline: none;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: colors.$grey;
+    -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+    outline: none;
+  }
+}
+
+.buttonWrapper {
+  min-width: 262px;
+  @include queries.tablet {
+    min-width: 100px;
+  }
+}

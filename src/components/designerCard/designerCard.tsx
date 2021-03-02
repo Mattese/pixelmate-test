@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { Button, ButtonClasses } from 'src/components/button/button';
 import { Designer } from 'src/types/types';
 import styles from './designerCard.module.scss';
+import { ReactComponent as ArrowForward } from 'src/assets/flaticon1557998900-blue-svg.svg';
+import { ReactComponent as LocationPointer } from 'src/assets/Group 1071.svg';
 
 interface ComponentProps {
   designer: Designer;
@@ -33,6 +35,9 @@ export const DesignerCard: React.FC<ComponentProps> = ({ designer }) => {
             {`${designer.address.zipcode}, ${designer.address.suite}` || <Skeleton />}
           </p>
         </div>
+        <span style={{ position: 'relative', left: -20, top: -65 }}>
+          <LocationPointer />
+        </span>
       </div>
       <div className={`${styles.webWrapper}`}>
         <h3>
@@ -46,6 +51,7 @@ export const DesignerCard: React.FC<ComponentProps> = ({ designer }) => {
           label={'ZOBRAZIT PROFIL' || <Skeleton />}
           className={ButtonClasses['button__White__Medium']}
           onClick={() => history.push(`/detail/${designer.id}`)}
+          icon={<ArrowForward />}
         />
       </div>
     </div>
