@@ -6,4 +6,5 @@ export type NavbarConfigItem = {
   page: ReactNode;
   exact: boolean;
   whiteMenuText: boolean;
+  match: string;
 };

@@ -22,10 +22,15 @@
   outline: none;
   color: colors.$primary-light;
   font-family: montserrat-bold;
+  transition: all 0.7s;
+  &:hover {
+    opacity: 0.7;
+  }
   cursor: pointer;
   &__Blue {
     @extend .button;
     background: colors.$primary 0% 0% no-repeat padding-box;
+
     &__Large {
       @extend .button__Blue;
       @include Large;

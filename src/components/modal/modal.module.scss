@@ -23,7 +23,9 @@
   left: 50%;
   transform: translate((-50%, -50%));
   min-height: 30%;
+  max-height: 70%;
   width: 60%;
+  max-width: 678px;
   background-color: colors.$white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 101;

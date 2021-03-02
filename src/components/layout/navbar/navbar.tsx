@@ -6,18 +6,32 @@ import { Home } from 'src/pages/home';
 import styles from './navbar.module.scss';
 import Logo from 'src/assets/Pixelmate_logo_claim_white.svg';
 import LogoBlack from 'src/assets/Pixelmate_logo_claim_black.svg';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { Modal } from 'src/components/modal/modal';
 import { Button } from 'src/components/button/button';
 import { FaHamburger } from 'react-icons/fa';
 
 export const routes: NavbarConfigItem[] = [
-  { path: '/designeri', label: 'Designéři', page: <Designers />, exact: true, whiteMenuText: true },
-  { path: '/detail/:id', label: 'Detail', page: <Detail />, exact: true, whiteMenuText: false },
-  { path: '/', label: 'Designéři', page: <Home />, exact: true, whiteMenuText: false },
+  {
+    path: '/designeri',
+    match: '/designeri',
+    label: 'Designéři',
+    page: <Designers />,
+    exact: true,
+    whiteMenuText: true,
+  },
+  {
+    path: '/detail/:id',
+    match: '/detail/[0-9]*',
+    label: 'Detail',
+    page: <Detail />,
+    exact: true,
+    whiteMenuText: true,
+  },
+  { path: '/', match: '/', label: 'Designéři', page: <Home />, exact: true, whiteMenuText: false },
 ];
 
-export const navbarConfig: Omit<NavbarConfigItem, 'page' | 'exact' | 'whiteMenuText'>[] = [
+export const navbarConfig: Omit<NavbarConfigItem, 'page' | 'exact' | 'whiteMenuText' | 'match'>[] = [
   { path: '/designeri', label: 'Designéři' },
   { path: '/', label: 'Portfolio' },
 ];
@@ -31,13 +45,16 @@ export const Navbar: React.FC = () => {
   const history = useHistory();
   const location = useLocation();
 
-  const shouldRenderWhiteMenu = () => {
-    setShouldRenderWhite(routes.some((route) => route.path === history.location.pathname && route.whiteMenuText));
-  };
-
   useEffect(() => {
     shouldRenderWhiteMenu();
+    window.scrollTo(0, 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]);
+
+  const shouldRenderWhiteMenu = () => {
+    const result = routes.some((route) => route.whiteMenuText && location.pathname.match(route.match));
+    setShouldRenderWhite(result);
+  };
 
   const changeBackground = () => {
     if (window.scrollY >= 100) {
@@ -61,7 +78,7 @@ export const Navbar: React.FC = () => {
         <div className={styles.navContainer}>
           <ul>
             {navbarConfig.map((route, index) => (
-              <li className={styles.navbarItem}>
+              <li className={shouldRenderWhite ? styles.navbarItemBlack : styles.navbarItem}>
                 <Link key={index} to={route.path}>
                   {route.label}
                 </Link>
@@ -69,24 +86,18 @@ export const Navbar: React.FC = () => {
             ))}
 
             <li>
-              <button className={styles.navbarItemButton} onClick={() => setIsModalOpen(true)}>
+              <button
+                className={shouldRenderWhite ? styles.navbarItemButtonBlack : styles.navbarItemButton}
+                onClick={() => setIsModalOpen(true)}
+              >
                 Přihlásit se
               </button>
             </li>
           </ul>
         </div>
       </div>
-      <div className={styles.mobileLogoContainer}>
-        <Link to="/">
-          <img src={Logo} alt="Pixelmate logo" />
-        </Link>
-      </div>
-      <div className={styles.mobileMenuButton}>
-        <FaHamburger size={50} onClick={() => setIsMobileMenuOpen((prevIsMobileMenuOpen) => !prevIsMobileMenuOpen)} />
-      </div>
-
-      {/* <div className={styles.mobileNavbar}>
-        <div className={styles.mobileNavItemsWrapper}>
+      <div className={styles.navbarMobileMenuBackground}>
+        <div className={isMobileMenuOpen ? styles.mobileNavbarVisible : styles.mobileNavbar}>
           {navbarConfig.map((route, index) => (
             <div className={styles.mobileNavItem}>
               <Link key={index} to={route.path}>
@@ -94,10 +105,23 @@ export const Navbar: React.FC = () => {
               </Link>
             </div>
           ))}
+          <div className={styles.mobileNavItem}>
+            <button onClick={() => setIsModalOpen(true)}>
+              <h2>Přihlásit se </h2>
+            </button>
+          </div>
         </div>
-      </div> */}
+        <div className={styles.mobileLogoContainer}>
+          <Link to="/">
+            <img src={Logo} alt="Pixelmate logo" />
+          </Link>
+        </div>
+        <div className={styles.mobileMenuButton}>
+          <FaHamburger size={50} onClick={() => setIsMobileMenuOpen((prevIsMobileMenuOpen) => !prevIsMobileMenuOpen)} />
+        </div>
+      </div>
 
-      {/* <Modal isModalVisible={isModalOpen} onModalClose={() => setIsModalOpen(false)}>
+      <Modal isModalVisible={isModalOpen} onModalClose={() => setIsModalOpen(false)}>
         <div className={styles.modalContentWrapper}>
           <div className={styles.modalTitle}>
             <h2>Přihlásit se</h2>
@@ -116,7 +140,7 @@ export const Navbar: React.FC = () => {
             <Button label="ODESLAT" onClick={() => console.log(modalEmail)} />
           </div>
         </div>
-      </Modal> */}
+      </Modal>
     </nav>
   );
 };

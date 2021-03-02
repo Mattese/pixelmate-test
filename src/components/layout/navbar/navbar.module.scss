@@ -20,6 +20,14 @@
   opacity: 0.5;
   z-index: 5;
   @include queries.tablet {
+    display: none;
+  }
+}
+
+.navbarMobileMenuBackground {
+  @include queries.tablet {
+    width: 100%;
+    height: 100px;
     background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
     opacity: 1;
   }
@@ -76,6 +84,12 @@
     text-decoration: none;
     margin-left: 4rem;
   }
+  &Black {
+    @extend .navbarItem;
+    > a {
+      color: colors.$black;
+    }
+  }
 }
 
 .navbarItemButton {
@@ -93,6 +107,11 @@
   &:hover {
     color: colors.$grey;
     border-color: colors.$grey;
+  }
+  &Black {
+    @extend .navbarItemButton;
+    border: 1px solid colors.$black;
+    color: colors.$black;
   }
 }
 
@@ -172,15 +191,19 @@
   }
 }
 
-.mobileNavItemsWrapper {
-  padding-top: 100px;
-  background-color: inherit;
-}
-
 .mobileNavbar {
+  display: none;
+  position: absolute;
+  top: -100%;
+  transition: all 0.5s ease;
+  z-index: -1;
   @include queries.tablet {
-    min-height: 100px;
     width: 100%;
+    display: block;
+  }
+  &Visible {
+    @extend .mobileNavbar;
+    top: 100px;
   }
 }
 
@@ -192,18 +215,29 @@
   align-items: center;
   background: transparent linear-gradient(180deg, #161b40 0%, #140f29 100%) 0% 0% no-repeat padding-box;
   &:hover {
-    background-color: colors.$grey;
+    > a,
+    button {
+      text-decoration: none;
+      color: colors.$primary;
+    }
   }
-  > a {
+  > a,
+  button {
     text-decoration: none;
     color: colors.$white;
+    background: none;
+    border: none;
   }
 }
 
 .mobileLogoContainer {
   height: 100%;
   align-items: center;
-  display: flex;
   justify-content: center;
   cursor: pointer;
+  display: none;
+  @include queries.tablet {
+    display: flex;
+    position: relative;
+  }
 }
