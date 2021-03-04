@@ -14,8 +14,12 @@ export const Designers: React.FC = () => {
 
   const loadDesigners = async () => {
     setLoading(true);
-    const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
-    setDesigners(data);
+    try {
+      const { data } = await axios.get('https://jsonplaceholder.typicode.com/users');
+      setDesigners(data);
+    } catch (error) {
+      console.log(error);
+    }
     setLoading(false);
   };
 

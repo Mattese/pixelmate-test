@@ -16,8 +16,13 @@ export const Detail: React.FC = () => {
 
   const loadData = async () => {
     setLoading(true);
-    const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`);
-    setDesignerDetail(data);
+    try {
+      const { data } = await axios.get(`https://jsonplaceholder.typicode.com/users/${params.id}`);
+
+      setDesignerDetail(data);
+    } catch (error) {
+      console.log(error);
+    }
     setLoading(false);
   };
 
