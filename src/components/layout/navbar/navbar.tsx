@@ -10,6 +10,7 @@ import { Link, useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import { Modal } from 'src/components/modal/modal';
 import { Button } from 'src/components/button/button';
 import { FaHamburger } from 'react-icons/fa';
+import { render } from '@testing-library/react';
 
 export const routes: NavbarConfigItem[] = [
   {
@@ -69,7 +70,11 @@ export const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className={navbarScrolled ? styles.navbarActive : styles.navbar}>
+    <nav
+      className={
+        navbarScrolled ? (shouldRenderWhite ? styles.navbarActiveTransparent : styles.navbarActive) : styles.navbar
+      }
+    >
       {/* Navbar logo holder */}
       <div className={styles.navbarSpacer}>
         <div>

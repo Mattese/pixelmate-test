@@ -22,6 +22,10 @@
   @include queries.tablet {
     display: none;
   }
+  &Transparent {
+    @extend .navbarActive;
+    background-color: transparent;
+  }
 }
 
 .navbarMobileMenuBackground {
