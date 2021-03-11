@@ -30,7 +30,9 @@ export const Button: React.FC<ComponentProps> = ({ label, disabled, onClick, cla
       disabled={disabled}
       className={`${styles[className ? className : 'button__Blue__Large']}`}
     >
-      {label} {icon && icon}
+      <span className={styles.label}>
+        {label} {icon && icon}
+      </span>
     </button>
   );
 };

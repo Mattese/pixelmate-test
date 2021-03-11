@@ -46,9 +46,13 @@ export const Navbar: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    window.addEventListener('scroll', changeBackground);
     shouldRenderWhiteMenu();
     window.scrollTo(0, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    return () => {
+      window.removeEventListener('scroll', changeBackground);
+    };
   }, [location.pathname]);
 
   const shouldRenderWhiteMenu = () => {
@@ -63,8 +67,6 @@ export const Navbar: React.FC = () => {
       setNavbarScrolled(false);
     }
   };
-
-  window.addEventListener('scroll', changeBackground);
 
   return (
     <nav className={navbarScrolled ? styles.navbarActive : styles.navbar}>

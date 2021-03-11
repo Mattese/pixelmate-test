@@ -3,16 +3,17 @@ import styles from './signInForm.module.scss';
 import { useForm } from 'react-hook-form';
 import { ReactComponent as ArrowForward } from 'src/assets/flaticon1557998900-white-svg.svg';
 
-type Inputs = {
-  example: string;
-  exampleRequired: string;
+type FormData = {
+  email: string;
+  password: string;
 };
 
 export const SignInForm: React.FC = () => {
-  const isDisabled = () => true;
-  const { register, handleSubmit, watch, errors } = useForm();
-  const onSubmit = (data: any, e: any) => {
-    e.preventDefault();
+  const { register, handleSubmit } = useForm<FormData>();
+  const onSubmit = (data: FormData, e?: React.BaseSyntheticEvent) => {
+    if (e) {
+      e.preventDefault();
+    }
     console.log(data, e);
   };
 
